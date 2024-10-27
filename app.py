@@ -7,6 +7,7 @@ import threading
 from queue import Queue
 import base64
 import json
+from flask import request
 
 app = Flask(__name__)
 
@@ -133,7 +134,8 @@ def generate_frames():
     global output_frame, lock, camera
     
     if camera is None:
-        camera = cv2.VideoCapture(0)
+        # Use a video file or stream instead of a webcam
+        camera = cv2.VideoCapture("path_to_video_file_or_stream")
     
     while True:
         success, frame = camera.read()
@@ -151,6 +153,7 @@ def generate_frames():
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -167,6 +170,8 @@ def get_detections():
         return jsonify(detections)
     except:
         return jsonify([])
+    
+
 
 if __name__ == '__main__':
     model = initialize_model()
