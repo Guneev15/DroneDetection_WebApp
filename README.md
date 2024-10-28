@@ -80,10 +80,3 @@ Special thanks to my project team members **Bhavishya Singla** and **Arpit Yadav
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
-## Contact
-For any questions, please feel free to reach out via LinkedIn or GitHub!
-
----
-
-This should provide all necessary details for users to understand, set up, and run your drone detection system!
